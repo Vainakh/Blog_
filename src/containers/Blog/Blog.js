@@ -6,6 +6,9 @@ import {Route, NavLink, Switch, Redirect} from 'react-router-dom';
 // import FullPost from './FullPost/FullPost';
 
 class Blog extends Component {
+    state = {
+        auth: false
+    }
     render () {
         return (
             <div className="Blog">
@@ -37,7 +40,7 @@ class Blog extends Component {
                 <Route path="/new-post" render={() => <h1>New Post</h1>}/> */}
                 
                 <Switch>
-                    <Route path="/new-post" component={NewPost}/> 
+                    {this.state.auth ? <Route path="/new-post" component={NewPost}/> : null} 
                     <Route path="/posts/" component={Posts}/>
                     {/* <Route path="/" component={Posts}/> */}
                     <Redirect from='/' to='/posts/'/>
